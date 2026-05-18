@@ -1,2 +1,8 @@
 @import "tailwindcss";
-@import "@heroui/styles"; 
+@import "@heroui/styles";
+
+@layer components {
+  .vertical-center {
+    height: calc(100vh - 65px);
+  }
+}

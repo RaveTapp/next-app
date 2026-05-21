@@ -6,3 +6,18 @@
     height: calc(100vh - 65px);
   }
 }
+
+@theme {
+  --background-image-dark-gradient: linear-gradient(to top, rgba(0,0,0,1), transparent);
+  --color-secondary: var(--text-secondary);
+}
+
+:root {
+  --text-secondary: var(--color-zinc-500, #71717a); 
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-secondary: var(--color-zinc-400, #a1a1aa); 
+  }
+}

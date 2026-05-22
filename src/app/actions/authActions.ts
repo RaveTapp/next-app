@@ -6,7 +6,7 @@ import { ActionResult } from "@/types";
 import bcrypt from "bcryptjs";
 import { User } from "../../../prisma/src/generated/prisma/client";
 import { LoginSchema } from "@/lib/schemas/loginSchema";
-import { signIn, signOut } from "@/auth";
+import { auth, signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 
 export async function signInUser(
@@ -81,4 +81,13 @@ export async function getUserByEmail(email: string) {
 
 export async function getUserById(id: string) {
   return prisma.user.findUnique({ where: { id } });
+}
+
+export async function getAuthUserId() {
+  const session = await auth();
+    const userId = session?.user?.id;
+
+    if (!userId) throw new Error("Unauthorized");
+
+    return userId;
 }
